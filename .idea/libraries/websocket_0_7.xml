@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="websocket-0.7">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netiq/websocket/0.7/206d47a3066d83004f86c5095a4969f8f6395164/websocket-0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netiq/websocket/0.7/c5bb5535015f23dada8ffc12df1227d45d37fdf4/websocket-0.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

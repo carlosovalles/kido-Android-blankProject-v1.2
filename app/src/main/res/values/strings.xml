@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">KidoZenBlankProject</string>
+    <string name="hello_world">Hello Kido...</string>
+    <string name="action_settings">Settings</string>
+
+</resources>

@@ -1,0 +1,2 @@
+kido-Android-blankProject
+=========================

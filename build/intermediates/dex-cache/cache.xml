@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/carlosovalles/Desktop/Blank-Working/app/build/intermediates/pre-dexed/debug/websocket-0.7-1ac6a406636532601b147ab4db83f0a6ec92964e.jar"
+        jar="/Users/carlosovalles/.gradle/caches/modules-2/files-2.1/com.netiq/websocket/0.7/206d47a3066d83004f86c5095a4969f8f6395164/websocket-0.7.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="206d47a3066d83004f86c5095a4969f8f6395164"/>
+    <item
+        dex="/Users/carlosovalles/Desktop/Blank-Working/app/build/intermediates/pre-dexed/debug/gson-2.2.4-e63b3e8814c0cf8783654dae656a8b713d279d81.jar"
+        jar="/Users/carlosovalles/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568"/>
+    <item
+        dex="/Users/carlosovalles/Desktop/Blank-Working/app/build/intermediates/pre-dexed/debug/classes-de772d1cbadf8c76620310abe09f469d3d3dfcc3.jar"
+        jar="/Users/carlosovalles/Desktop/Blank-Working/app/build/intermediates/exploded-aar/Blank-Working.library/client/unspecified/classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="58820945b71d7f1e4f137d0bd14e3d73a754b4f0"/>
+
+</pre-dex-items>

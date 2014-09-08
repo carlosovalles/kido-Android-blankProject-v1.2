@@ -1,0 +1,103 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.+'
+
+        classpath 'org.robolectric:robolectric-gradle-plugin:0.11.+'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'robolectric'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
+    defaultConfig {
+        applicationId 'com.kidozen.client'
+        minSdkVersion 15
+        versionCode 1
+        versionName '1.2'
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "test_marketplace", "\"${getProjectProperty('tenant')}\""
+            buildConfigField "String", "test_application", "\"${getProjectProperty('app')}\""
+            buildConfigField "String", "test_app_key", "\"${getProjectProperty('key')}\""
+            buildConfigField "String", "test_provider", "\"${getProjectProperty('provider')}\""
+            buildConfigField "String", "test_username", "\"${getProjectProperty('user')}\""
+            buildConfigField "String", "test_password", "\"${getProjectProperty('pass')}\""
+            buildConfigField "String", "test_service", "\"${getProjectProperty('service')}\""
+            buildConfigField "String", "test_email_to", "\"${getProjectProperty('email_to')}\""
+            buildConfigField "String", "test_email_attach", "\"${getProjectProperty('email_attach')}\""
+        }
+    }
+    productFlavors {
+    }
+    sourceSets {
+        androidTest.setRoot('src/test')
+    }
+}
+def String getProjectProperty(String propertyName)
+{
+    String movieTitle = "null"
+    if (hasProperty(propertyName))
+    {
+        movieTitle = this.properties[propertyName]
+    }
+    return movieTitle
+}
+android.libraryVariants.all { variant ->
+    def name = variant.buildType.name
+    if (name.equals(com.android.builder.core.BuilderConstants.DEBUG)) {
+        return; // Skip debug builds.
+    }
+    def task = project.tasks.create "jar${name.capitalize()}", Jar
+    task.dependsOn variant.javaCompile
+    task.from variant.javaCompile.destinationDir
+    artifacts.add('archives', task);
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+}
+
+task androidJavadocsJar(type: Jar) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+dependencies {
+    androidTestCompile 'junit:junit:4.11'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.netiq:websocket:0.7'
+    compile 'com.google.code.gson:gson:2.2.4'
+    androidTestCompile 'org.robolectric:robolectric:2.3'
+}
+
+//only include files that are suffixed with Test.class and set the max heap size
+robolectric {
+    exclude '**/PubSubTest.class'
+    include '**/**Test.class'
+    maxHeapSize = "2048m"
+
+}
